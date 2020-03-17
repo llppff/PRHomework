@@ -65,10 +65,10 @@ with tf.compat.v1.Session() as sess:
 
 
 
-        # feed_train = {y: train_data[1: 100], b: train_label[1: 100]}
+        feed_train = {y: train_data[1: 200], b: train_label[1: 200]}
         feedt_test = {y: mnist.test.images, b: mnist.test.labels}
 
-        train_acc = sess.run(accruracy, feed_dict=train_data)
+        train_acc = sess.run(accruracy, feed_dict=feed_train)
         test_acc = sess.run(accruracy, feed_dict=feedt_test)
 
         print("loss: %.9f train_acc: %.3f test_acc: %.3f" %
