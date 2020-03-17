@@ -26,7 +26,7 @@ a = tf.compat.v1.nn.softmax(tf.matmul(y, Weight) + bias)
 loss =  tf.compat.v1.norm(b-tf.matmul(y, Weight) - bias,ord=2)
 # 使用梯度下降的方法进行参数优化
 learning_rate = 0.01
-optimizer = tf.compat.v1.train.GradientDescentOptimizer(learning_rate).minimize(loss)
+optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate).minimize(loss)
 
 # 判断是否预测结果与正确结果是否一致
 # predres 数组的输出是 [False, True...] 类似格式
