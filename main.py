@@ -42,7 +42,6 @@ init_param = tf.global_variables_initializer()
 
 train_epochs = 100
 batch_size = 100
-show_result_times = 5
 
 with tf.compat.v1.Session() as sess:
     sess.run(init_param)
@@ -66,12 +65,11 @@ with tf.compat.v1.Session() as sess:
 
 
 
-        if epoch % show_result_times == 0:
-            feed_train = {y: train_data[1: 100], b: train_label[1: 100]}
-            feedt_test = {y: mnist.test.images, b: mnist.test.labels}
+        # feed_train = {y: train_data[1: 100], b: train_label[1: 100]}
+        feedt_test = {y: mnist.test.images, b: mnist.test.labels}
 
-            train_acc = sess.run(accruracy, feed_dict=feed_train)
-            test_acc = sess.run(accruracy, feed_dict=feedt_test)
+        train_acc = sess.run(accruracy, feed_dict=train_data)
+        test_acc = sess.run(accruracy, feed_dict=feedt_test)
 
-            print("loss: %.9f train_acc: %.3f test_acc: %.3f" %
-                  (avg_loss, train_acc, test_acc))
+        print("loss: %.9f train_acc: %.3f test_acc: %.3f" %
+              (avg_loss, train_acc, test_acc))
